@@ -69,8 +69,8 @@ def extract_image_patch(image, bbox, patch_shape):
     image = cv2.resize(image, tuple(patch_shape[::-1]))
     return image
 
-from tensorflow.contrib.slim.nets import resnet_v1
-import tensorflow.contrib.slim as slim
+# from tensorflow.contrib.slim.nets import resnet_v1
+# import tensorflow.contrib.slim as slim
 
 class ImageEncoder(object):
 

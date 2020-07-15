@@ -1,0 +1,37 @@
+# error message trying to run main.py:
+# If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvWaitKey'
+
+
+==
+
+The above error was resolved by removing the conda environment and re-creating, after apt-get commands for libgtk2.0-dev and pkg-config
+
+==
+
+New Error in GUI:
+[INFO] Done Training!
+[INFO] Evaluation started...
+[INFO]: Using Traphic for the saved model
+./resources/trained_models/Traphic_model.tar
+[ERROR] Error(s) in loading state_dict for traphicNet: Missing key(s) in state_dict: "ip_emb_vel.weight", "ip_emb_vel.bias", "ip_emb_nc.weight", "ip_emb_nc.bias", "beh_1.weight", "beh_1.bias". size mismatch for dec_lstm.weight_ih_l0: copying a param with shape torch.Size([512, 112]) from checkpoint, the shape in current model is torch.Size([512, 144]). size mismatch for op_lat.weight: copying a param with shape torch.Size([3, 112]) from checkpoint, the shape in current model is torch.Size([3, 144]). size mismatch for op_lon.weight: copying a param with shape torch.Size([2, 112]) from checkpoint, the shape in current model is torch.Size([2, 144]).
+[ERROR] Traceback (most recent call last):
+[ERROR] File "/data/AVCES/TrackNPred/control/trainThread.py", line 136, in run
+[ERROR] self.model.evaluate(self.args, self)
+[ERROR] File "/data/AVCES/TrackNPred/model/model.py", line 292, in evaluate
+[ERROR] net.load_state_dict(torch.load(d))
+[ERROR] File "/home/mes/anaconda3/envs/tnp/lib/python3.7/site-packages/torch/nn/modules/module.py", line 839, in load_state_dict
+[ERROR] self.__class__.__name__, "\n\t".join(error_msgs)))
+[ERROR] RuntimeError: Error(s) in loading state_dict for traphicNet:
+[ERROR] Missing key(s) in state_dict: "ip_emb_vel.weight", "ip_emb_vel.bias", "ip_emb_nc.weight", "ip_emb_nc.bias", "beh_1.weight", "beh_1.bias".
+[ERROR] size mismatch for dec_lstm.weight_ih_l0: copying a param with shape torch.Size([512, 112]) from checkpoint, the shape in current model is torch.Size([512, 144]).
+[ERROR] size mismatch for op_lat.weight: copying a param with shape torch.Size([3, 112]) from checkpoint, the shape in current model is torch.Size([3, 144]).
+[ERROR] size mismatch for op_lon.weight: copying a param with shape torch.Size([2, 112]) from checkpoint, the shape in current model is torch.Size([2, 144]).
+
+==
+
+The above error was resolved by copying the most recent model.tar file in resources/trained_models/ to replace the file Traphic_model.tar
+
+This could have also been resolved by choosing a correct model under the drop-down menu
+in the GUI.
+
+==
